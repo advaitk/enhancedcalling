@@ -1,7 +1,7 @@
 # enhancedcalling
 
 ## Overview
-With Cisco EOL'ing hybrid services for Webex Cloud registred devices, Personal mode devices, lost PSTN calling cabailities, both inbound and outbound.
+With Cisco EOL'ing hybrid services for Webex Cloud registered devices, Personal mode devices, lost PSTN calling capabilities, both inbound and outbound.
 
 Cisco then came out with an interim/stop-gap solution, to address this gap in functionality, called Enhanced Calling.
 This is a demonstration of how Enhanced Calling can be enabled, using On Premise CUCM deployment.
