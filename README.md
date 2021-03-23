@@ -40,6 +40,7 @@ The intent of this script is to solve the interim problem, till comes out with a
 
 ## Usage
 
+* 
     ```bash
     python3 runner.py --help
     Usage: runner.py [OPTIONS]
@@ -49,3 +50,4 @@ The intent of this script is to solve the interim problem, till comes out with a
       --devicemac TEXT  format 'AA:BB::CC:DD:EE:FF'
       --help            Show this message and exit.
     ```
+
