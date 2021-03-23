@@ -1,15 +1,15 @@
 # enhancedcalling
 
 ## Overview
-With Cisco EOL'ing hybrid services for Webex Cloud registered devices, Personal mode devices, lost PSTN calling capabilities, both inbound and outbound.
+With Cisco EOL'ing some hybrid services for Webex Cloud registered devices, Personal mode devices lost their PSTN calling capabilities, both inbound and outbound.
 
-Cisco then came out with an interim/stop-gap solution, to address this gap in functionality, called Enhanced Calling.
-This is a demonstration of how Enhanced Calling can be enabled, using On Premise CUCM deployment.
+Cisco has an interim/stop-gap solution, to address this gap in functionality, called Enhanced Calling.
+This is a demonstration of how Enhanced Calling can be enabled, using On Premise UCM deployment.
 
 The API used in these examples are not "public" APIs. Meaning, they are not published at https://developer.webex.com and are subject to change without notice from Cisco.
 
 But these are the same APIs that Control HUB UI makes use of.
-The intent of this script is to solve the interim problem, till comes out with a more longer term solution.
+The intent of this script is to solve the short term problem, till we get a more longer term solution.
 ## Installation/Setup
 * Install Python 3
 
