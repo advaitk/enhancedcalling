@@ -7,6 +7,7 @@ from zeep.cache import SqliteCache
 from zeep.transports import Transport
 from zeep.exceptions import Fault
 from zeep.plugins import HistoryPlugin
+import zeep.helpers
 
 
 from requests import Session
@@ -107,17 +108,23 @@ class axl_client(object):
     def create_sparkRD(self, pstn_userid, main_user):
         self.log.info("Trying to create SparkRD device for: " + pstn_userid)
 
-        device_pool_name = 'Default'
-        self.log.debug("Looking up Device Pool for users other devices")
+        copy_from_device = None
+        self.log.debug("Looking up User Device to copy configs from")
         try:
            device_names = main_user['associatedDevices']['device']
            if len(device_names) != 0 :
-               device = self.get_phone(device_names[0])
-               device_pool_name = device['devicePoolName']['_value_1']
-               self.log.info("Found device Pool Name : {} : from device : {}".format(device_pool_name, device['name']))
+               copy_from_device = self.get_phone(device_names[0])
+               self.log.info("Found device to copy configs from : {}".format(copy_from_device['name']))
         except KeyError:
             self.log.error("User {} has no associated devices".format(main_user['userid']))
-            self.log.debug("Using device pool name : " + device_pool_name)
+        
+        if copy_from_device == None:
+            raise RuntimeError("Failed to find a device for user {} to copy configs from: ".format(main_user['userid']))
+        
+        ''' These are the configs we need from users another device for the SparkRD to work'''
+        keys = ['callingSearchSpaceName', 'subscribeCallingSearchSpaceName', 'rerouteCallingSearchSpaceName','presenceGroupName']
+        s = {k:v['_value_1'] for (k, v) in zeep.helpers.serialize_object(copy_from_device).items() if k in keys}
+        self.log.info("Using Copied device configs: " + str(s))
 
         device_name = 'SparkRD' + pstn_userid.replace('.pstn', '').upper()
         phone = {
@@ -129,7 +136,11 @@ class axl_client(object):
             'class': 'Phone',
             'protocol': 'CTI Remote Device',
             'protocolSide': 'User',
-            'devicePoolName': device_pool_name,
+            'devicePoolName': copy_from_device['devicePoolName'],
+            'callingSearchSpaceName': copy_from_device['callingSearchSpaceName'],
+            'subscribeCallingSearchSpaceName': copy_from_device['subscribeCallingSearchSpaceName'],
+            'rerouteCallingSearchSpaceName': copy_from_device['rerouteCallingSearchSpaceName'],
+            'presenceGroupName': copy_from_device['presenceGroupName'],
             'commonPhoneConfigName': 'Standard Common Phone Profile',
             'locationName': 'Hub_None',
             'useTrustedRelayPoint': 'Default',

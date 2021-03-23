@@ -100,8 +100,8 @@ def execute(userid, devicemac):
     axl_client.create_rd(linked_place['sipUrl'], sparkrd_phone_name, pstn_user['userid'])
     log.info("Done with #9")
 
-    print("Done Enabling Enhanced mode for Cloud device : {} : SparkRD : {} "
-         .format(cloud_device['displayName'], sparkrd_phone_name))
+    print("Done Enabling Enhanced mode for Cloud device SIP : {} : Userid : {} : SparkRD : {} "
+         .format(linked_place['sipUrl'],pstn_userid, sparkrd_phone_name))
 
     #Clean up
     axl_client.close_session()
