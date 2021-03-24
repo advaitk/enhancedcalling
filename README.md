@@ -39,15 +39,37 @@ The intent of this script is to solve the short term problem, till we get a more
 
 
 ## Usage
+* Help
 
-* 
     ```bash
     python3 runner.py --help
     Usage: runner.py [OPTIONS]
 
     Options:
       --userid TEXT     Userid not email
-      --devicemac TEXT  format 'AA:BB::CC:DD:EE:FF'
+      --devicemac TEXT  format 'AA:BB:CC:DD:EE:FF'
       --help            Show this message and exit.
     ```
 
+* Single run
+
+    ```bash
+    python3 runner.py --userid advaitk --devicemac AA:BB:CC:DD:EE:FF
+    ```
+
+* Multi run
+  
+  ```bash
+  #Create a csv file with userid and devicemac as rows, for e.g.
+  cat list.csv
+  userid1,AA:BB:CC:DD:EE:F1
+  userid2,AA:BB:CC:DD:EE:F2
+  userid3,AA:BB:CC:DD:EE:F3
+  
+  #And then invoke the runner.py command using this bash snippet
+  while IFS=, read -r userid devicemac
+  do
+      echo "Invoking using userid : $userid : device mac $devicemac"
+      python3 runner.py --userid $userid --devicemac $devicemac
+  done < list.csv
+  ```

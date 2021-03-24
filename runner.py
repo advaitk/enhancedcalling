@@ -22,7 +22,7 @@ log = logging.getLogger(__name__)
               help="Userid not email")
 @click.option("--devicemac", 
               prompt="MAC Address of Device", 
-              help="format 'AA:BB::CC:DD:EE:FF'")
+              help="format 'AA:BB:CC:DD:EE:FF'")
 def run(userid, devicemac):
     click.echo("Got input userid : {} : macaddress : {}".format(userid,devicemac))
     execute(userid, devicemac)
