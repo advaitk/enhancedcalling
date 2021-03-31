@@ -75,3 +75,8 @@ But these are the same APIs that Control HUB UI makes use of.
       python3 runner.py --userid $userid --devicemac $devicemac
   done < list.csv
   ```
+## Credits and references
+
+1. [The axl-python-zeep-samples project by Cisco DevNet](https://github.com/CiscoDevNet/axl-python-zeep-samples)
+2. [Hybrid Calling for WebEx Devices](https://cisco.com/go/hybrid-call-webex-devices)
+3. [Cisco Webex Device Connector](https://help.webex.com/en-us/383gbd/Cisco-Webex-Device-Connector)
