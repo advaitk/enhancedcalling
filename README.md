@@ -1,8 +1,8 @@
 # enhancedcalling
-Automate enabling of Enhanced Calling mode for Cisco Webex Cloud registred, personal mode devices 
+Automate enabling of Enhanced Calling mode for Cisco WebEx Cloud registered, personal mode devices 
 
 ## Overview
-Enhanced Calling allows users to utilize PSTN dialing on video devices when registered on Webex Cloud in Personal Mode. Previously, Cisco completed EOL on some hybrid services for Webex Cloud registered devices, then Personal mode devices lost their inbound and outbound PSTN calling capabilities.
+Enhanced Calling allows users to utilize PSTN dialing on video devices when registered on WebEx Cloud in Personal Mode. Previously, Cisco completed EOL on some hybrid services for WebEx Cloud registered devices, then Personal mode devices lost their inbound and outbound PSTN calling capabilities.
 
 Cisco has an interim/stop-gap solution to address the gap in functionality, called Enhanced Calling, which brings back PSTN capability for those users with Personal mode devices.
 
