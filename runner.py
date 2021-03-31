@@ -36,7 +36,6 @@ def execute(userid, devicemac):
 
     csdm_client = csclient(os.getenv('CSDM_ORGID'), os.getenv('CSDM_ACESSTKN'))
     log.info(os.getenv('CSDM_ORGID'))
-    log.info(os.getenv('CSDM_ACESSTKN'))
 
     #0
     UCM_VERSION = axl_client.get_version()
