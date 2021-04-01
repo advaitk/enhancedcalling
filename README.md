@@ -17,6 +17,14 @@ But these are the same APIs that Control HUB UI makes use of.
 
     On Windows, choose the option to add to PATH environment variable
 
+* Download the source code
+  
+    Use one of the options provided by Github that is most appropriate for you options.
+
+    For example clone this repository using git command line
+    ```bash
+    git clone git@github.com:advaitk/enhancedcalling.git
+    ```
 * (Optional) Create/activate a Python virtual environment named `venv`:
 
     ```bash
@@ -35,9 +43,9 @@ But these are the same APIs that Control HUB UI makes use of.
 
     1. From the CUCM Administration UI, download the 'Cisco AXL Tookit' from **Applications** / **Plugins**
 
-    1. Unzip the kit, and navigate to the `schema/current` folder
+    2. Unzip the kit, and navigate to the `schema/current` folder
 
-    1. Copy the three WSDL files to the `schema/` directory of this project: `AXLAPI.wsdl`, `AXLEnums.xsd`, `AXLSoap.xsd`
+    3. Copy the three WSDL files to the `schema/` directory of this project: `AXLAPI.wsdl`, `AXLEnums.xsd`, `AXLSoap.xsd`
 
 
 ## Usage
