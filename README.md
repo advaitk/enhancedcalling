@@ -88,3 +88,5 @@ But these are the same APIs that Control HUB UI makes use of.
 1. [The axl-python-zeep-samples project by Cisco DevNet](https://github.com/CiscoDevNet/axl-python-zeep-samples)
 2. [Hybrid Calling for WebEx Devices](https://cisco.com/go/hybrid-call-webex-devices)
 3. [Cisco Webex Device Connector](https://help.webex.com/en-us/383gbd/Cisco-Webex-Device-Connector)
+
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/advaitk/enhancedcalling)
