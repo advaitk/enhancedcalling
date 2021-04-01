@@ -23,7 +23,7 @@ But these are the same APIs that Control HUB UI makes use of.
 
     For example clone this repository using git command line
     ```bash
-    git clone git@github.com:advaitk/enhancedcalling.git
+    git clone https://github.com/advaitk/enhancedcalling.git
     ```
 * (Optional) Create/activate a Python virtual environment named `venv`:
 
