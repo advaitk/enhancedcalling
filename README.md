@@ -2,16 +2,14 @@
 Automate enabling of Enhanced Calling mode for Cisco WebEx Cloud registered, personal mode devices 
 
 ## Overview
-Enhanced Calling allows users to utilize PSTN dialing on video devices when registered on WebEx Cloud in Personal Mode. Previously, Cisco completed EOL on some hybrid services for WebEx Cloud registered devices, then Personal mode devices lost their inbound and outbound PSTN calling capabilities.
+Enhanced Calling allows users to utilize PSTN dialing on video devices when registered on Webex Cloud in Personal Mode. Previously, Cisco completed End-of-Support (EOS) on some hybrid services for Webex Cloud registered devices, then Personal mode devices lost their inbound and outbound PSTN calling capabilities.
 
-Cisco has an interim/stop-gap solution to address the gap in functionality, called Enhanced Calling, which brings back PSTN capability for those users with Personal mode devices.
+Cisco has a phase solution to address the gap in functionality, called Enhanced Calling, which brings back PSTN capability for those users with Personal mode devices. This code is a demonstration of how Enhanced Calling can be enabled, using On Premise UCM deployment, and is meant for educational/information purposes only.
 
-This code is a demonstration of how Enhanced Calling can be enabled, using On Premise UCM deployment. And is meant for educational/information purposes only.
+Some changes might be required to fit the deployment and configurations of your particular environment. 
 
-Some changes might be required to fit the deployment and configurations of your particular environment.
+Some of the APIs used in these examples are also not "public" APIs, meaning they are not published at https://developer.webex.com and are subject to change without notice from Cisco. However, these are the same APIs that Control Hub UI makes use of.
 
-Some of the APIs used in these examples are not "public" APIs. Meaning, they are not published at https://developer.webex.comand are subject to change without notice from Cisco.
-But these are the same APIs that Control HUB UI makes use of.
 ## Installation/Setup
 * Install Python 3
 
