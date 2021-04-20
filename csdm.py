@@ -6,11 +6,12 @@ import requests
 SEARCH_URL='https://csdm-a.wbx2.com/csdm/api/v1/organization/{}/devices/_search'
 PLACE_URL='https://csdm-a.wbx2.com/csdm/api/v1/organization/{}/places/{}'
 UCM_PLACE_URL='https://uss-a.wbx2.com/uss/api/v1/orgs/{}/ucmplaceinfo/{}'
+DEVICE_URL='https://csdm-a.wbx2.com/csdm/api/v1/organization/{}/devices/{}'
 
 class csdm_client(object):
 
     def __init__(self, orgid, access_token):
-        self.log = log = logging.getLogger(__name__)
+        self.log = logging.getLogger(__name__)
         self.orgid = orgid
         self.access_token = access_token
 
@@ -37,6 +38,23 @@ class csdm_client(object):
             return device
         except KeyError:
             self.log.error("Device not found for MAC:" + device_mac)
+            raise RuntimeError
+
+    def get_device_byid(self, id):
+        self.log.info("Searching for device with id :" + id)
+        url = DEVICE_URL.format(self.orgid, id)
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer {}".format(self.access_token)
+        }
+        r = requests.get(url, headers=headers)
+        r.raise_for_status()
+        try:
+            device = r.json()
+            self.log.debug(json.dumps(device, indent=4, sort_keys=True))
+            return device
+        except KeyError:
+            self.log.error("Device not found for id:" + id)
             raise RuntimeError
 
     def get_place(self, place_id):
@@ -82,17 +100,23 @@ class csdm_client(object):
         self.log.info(json.dumps(place, indent=4, sort_keys=True))
         return place
 
-    def create_place(
-        self,
-        device_uuid,
-        home_cluster_fqdn,
-        primary_dn,
-        directory_uri,
-        ucm_version,
-        telephone_number,
-        sip_dest_override):
+    def get_ucm_place(self, place_id):
+        self.log.info("Searching for UCM Place with UUID :" + place_id)
+        url = UCM_PLACE_URL.format(self.orgid, place_id)
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer {}".format(self.access_token)
+        }
+        r = requests.get(url, headers=headers)
+        r.raise_for_status()
+        place = r.json()
+        self.log.info(json.dumps(place, indent=4, sort_keys=True))
+        return place
 
-        self.log.info("Trying to create a Place")
+    def create_ucm_place(self, device_uuid, home_cluster_fqdn, primary_dn,
+        directory_uri, ucm_version, telephone_number, sip_dest_override):
+
+        self.log.info("Trying to create a UCM Place")
         url = UCM_PLACE_URL.format(self.orgid, device_uuid)
         headers = {
             'Content-Type': 'application/json',
@@ -110,3 +134,4 @@ class csdm_client(object):
         r.raise_for_status()
         self.log.info("Done Creating the Place/Sync process")
         return True
+

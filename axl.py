@@ -56,6 +56,19 @@ class axl_client(object):
         self.log.info("CUCM Version :" + resp['return']['componentVersion']['version'])
         return resp['return']['componentVersion']['version']
 
+    def get_cluster_name(self):
+        try:
+            resp = self.service.getServiceParameter(
+                processNodeName = "EnterpriseWideData",
+                name = "ClusterName",
+                service= "Enterprise Wide"
+            )
+            return resp['return']['serviceParameter']['value']
+        except Fault as fault:
+            self.log.error(fault.code)
+            self.log.error(fault.message)
+        return None
+
     def get_nodes(self):
         resp = self.service.listProcessNode(
             searchCriteria = {"processNodeRole": 'CUCM Voice/Video'},
