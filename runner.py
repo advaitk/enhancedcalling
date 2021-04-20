@@ -40,9 +40,8 @@ def execute(userid, devicemac):
     #0
     UCM_VERSION = axl_client.get_version()
     log.info(UCM_VERSION)
-    nodes = axl_client.get_nodes()
-
-    HOME_CLUSTER_FQDN = " ".join(nodes)
+    
+    HOME_CLUSTER_FQDN = axl_client.get_cluster_name()
     log.info("Done with #0")
 
     #1 
@@ -84,7 +83,7 @@ def execute(userid, devicemac):
     log.info("Done with #6")
 
     #7
-    status = csdm_client.create_place(
+    status = csdm_client.create_ucm_place(
             cloud_device['cisUuid'],
             HOME_CLUSTER_FQDN,
             main_user['primaryExtension']['pattern'].replace('\\', ''),
